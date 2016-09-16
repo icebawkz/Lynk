@@ -1,0 +1,196 @@
+@font-face{
+    font-family: "FiraSans";
+    src: url('FiraSans.otf')
+}
+
+body {
+  --bg-color: #333333;
+  --bg-raised-color: #444444;
+  --white: #eee;
+  --inactive-color: #bdbdbd;
+  --add-primary-color: #E53935;
+
+  --transition-short: 0.3s;
+  --transition-med: 0.6s;
+  --transition-long: 1s;
+
+  --shadow-shallow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
+  --paragraph-font-stack: "FiraSans", Calibri, sans-serif;
+  overflow: hidden;
+}
+
+
+.lynx--active__add{
+  color: var(--add-primary-color);
+}
+
+.lynx-input.lynx--highlight__add{
+  border-bottom-color: #E53935;
+}
+
+.lynx-input--container {
+    display: flex;
+    width: 50%;
+    box-shadow: var(--shadow-shallow);
+    background: var(--bg-raised-color);
+}
+
+.lynx-input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: var(--inactive-color);
+    padding: 16px 32px;
+    outline: none;
+
+    background: linear-gradient(to right, transparent 50%, var(--add-primary-color) 50%);
+    background-size: 200% 100%;
+    background-position:left bottom;
+
+    transition: all var(--transition-short);
+    font-family: var(--paragraph-font-stack);
+}
+
+.lynx-input.lynx-input--highlighted{
+  color: var(--white);
+  background-position: right bottom;
+}
+
+.lynx-input--large {
+    flex: 1;
+    height: 10%;
+    font-size: 1.25em;
+}
+
+.lynx-input__addon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid var(--inactive-color);
+  color: var(--inactive-color);
+  text-align: center;
+  width: 10%;
+  font-size: 1.5em;
+
+  transition: all var(--transition-short);
+}
+
+.lynx-input__addon.lynx--highlight__add{
+  border-color: var(--add-primary-color);
+}
+
+.lynx-input__addon.lynx--highlight__add:hover{
+  background: var(--add-primary-color);
+  color: white;
+}
+
+.lynx-input__addon.lynx-input--highlighted {
+  background: var(--add-primary-color);
+}
+
+.lynx-input__addon.lynx-input--highlighted:hover {
+  color: var(--add-primary-color);
+  background: white;
+}
+
+.lynx-input__menu{
+    z-index: -1;
+   filter:url('#goo');
+   height: 10%;
+   width: 50%;
+   margin: 16px;
+   padding: 0.5%;
+   position: relative;
+   display: flex;
+   justify-content: space-around;;
+   align-items: center;
+   opacity: 0;
+   top: -64px;
+
+   transition: all var(--transition-short);
+}
+
+.lynx-input__menu.lynx-input__menu--shown {
+  z-index: 0;
+  opacity: 1;
+  top: 0;
+}
+
+.lynx-input__menu > .blob {
+  background:#E53935;
+  width:64px;
+  height:64px;
+  color:white;
+  border-radius:50%;
+  box-shadow: var(--shadow-shallow);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all var(--transition-med);
+}
+
+
+.lynx-input__menu > .blob:hover {
+  background: white;
+  fill: var(--add-primary-color);
+}
+
+.blob > * {
+  vertical-align: middle;
+  max-width:80%;
+  max-height:80%;
+}
+
+.lynx-button {
+  border: 1px solid var(--inactive-color);
+  background: none;
+  width: 30%;
+  padding-left: 10%;
+  padding-right: 10%;
+  outline: none;
+}
+
+
+
+.lynx-nav-container {
+    width: 100%;
+    height: 10%;
+    background: var(--bg-color);
+    border-bottom: 2px solid var(--add-primary-color);
+    color: var(--inactive-color);
+
+    font-family: var(--paragraph-font-stack);
+
+}
+
+.lynx-nav {
+  height: 100%;
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+
+
+.lynx-app {
+  width: 100%;
+  height: 90%;
+  background: var(--bg-color);
+}
+
+.lynx-app__add {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+}

@@ -1,0 +1,110 @@
+<html>
+
+  <head>
+    <link href='./styles.css' rel='stylesheet' />
+    <link href='./reset.css' rel='stylesheet' />
+    <link href='./list.css' rel='stylesheet' />
+  </head>
+
+  <body>
+    <nav class='lynx-nav-container'>
+      <ul class='lynx-nav'>
+        <li class='lynx--active__add'> Home </li>
+        <li> Stached </li>
+        <li> Annotations </li>
+        <li> Reading List </li>
+      </ul>
+    </nav>
+
+    <section class='lynx-app'>
+
+      <div class='lynx-app__list'>
+            <table class='lynx-list__table'>
+              <tr class='lynx-list__tr'>
+                <td class='lynx-list__td__icon'> URL </td>
+                <td class='lynx-list__td__url'> www.google.com </td>
+                <td class='lynx-list__td_short'> OrganicallyNeutralRecord </td>
+                <td class='lynx-list__td__tag'> Tags </td>
+              </tr>
+              <tr class='lynx-list__tr'>
+                <td class='lynx-list__td__icon'> URL </td>
+                <td class='lynx-list__td__url'> www.google.com </td>
+                <td class='lynx-list__td_short'> OrganicallyNeutralRecord </td>
+                <td class='lynx-list__td__tag'> Tags </td>
+              </tr>
+            </table>
+          </div>
+
+      <!-- <div class='lynx-app__add'>
+        <div class="lynx-input--container">
+          <span id='input-addon--url' class="lynx-input__addon">+</span>
+          <input id='input--url' class='lynx-input lynx-input--large lynx--active__add' placeholder="Enter a URL" autofocus>
+        </div>
+
+
+        </input>
+        <div id='hidden-menu' class='lynx-input__menu'>
+          <div class='blob'>
+            <img src='./share.svg'></img>
+          </div>
+          <div class='blob'>
+            <img src='./annotate.svg'></img>
+          </div>
+          <div class='blob'>
+            <img src='./reading-list.svg'></img>
+
+          </div>
+        </div>
+      </div> -->
+    </section>
+
+    <script>
+
+      let focused = true;
+      const inputBox = document.getElementById('input--url')
+      const inputAddon = document.getElementById('input-addon--url')
+      const inputMenu = document.getElementById('hidden-menu')
+
+      inputBox.onfocus = function(element){
+        this.classList.add('lynx--highlight__add');
+        inputAddon.classList.
+                 add('lynx--highlight__add')
+        focused = true;
+      }
+
+      inputBox.onblur = function(element){
+        if (!inputBox.value){
+          this.classList.remove('lynx--highlight__add');
+          inputBox.classList.remove('lynx-input--highlighted');
+          inputAddon.classList.
+                   remove('lynx--highlight__add')
+          inputAddon.classList.remove('lynx-input--highlighted')
+          inputMenu.classList.remove('lynx-input__menu--shown')
+
+
+          focused = false;
+        }
+      }
+
+      document.onkeypress = function(event){
+        if (!!inputBox.value && event.keyCode == 13){
+          inputBox.classList.add('lynx-input--highlighted');
+          inputAddon.classList.add('lynx-input--highlighted')
+          inputMenu.classList.add('lynx-input__menu--shown')
+        }
+      }
+
+
+    </script>
+
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+      <defs>
+          <filter id="goo">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+          <feBlend in="SourceGraphic" in2="goo" />
+        </filter>
+      </defs>
+    </svg>
+  </body>
+</html>
