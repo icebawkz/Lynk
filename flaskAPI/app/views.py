@@ -1,5 +1,6 @@
 from app import app
 from random import randint
+from flask import Flask, jsonify
 
 adjectives, adverbs, nouns = [], [], []
 with open("C:\\Users\\amcafee\\Documents\\GitHub\\Lynk\\adjectives\\adjectives.txt") as f:
@@ -10,6 +11,8 @@ with open("C:\\Users\\amcafee\\Documents\\GitHub\\Lynk\\nouns\\nouns.txt") as f:
 	nouns = f.read().split()
 
 print((adjectives[0]  + adjectives[1]).encode("utf-8", errors='waaaat'))
+
+
 
 @app.route('/')
 @app.route('/index')
@@ -24,3 +27,18 @@ def shortener():
 def tester():
 	return "Testing"
 
+@app.route('/nuts', methods=['GET'])
+def get_tasks():
+	nuts = [
+		{
+			'id': u'amcafee',
+			'title': u'http://www.sexandsubmission.com',
+			'description': u'squirr.el/' + (adjectives[randint(0,len(adjectives))] + adverbs[randint(0,len(adverbs))] + nouns[randint(0,len(nouns))]),
+		},
+		{
+			'id': u'aelahi',
+			'title': u'https://www.bdsmgrandmamidgetshit.com',
+			'description': u'squirr.el/' + (adjectives[randint(0,len(adjectives))] + adverbs[randint(0,len(adverbs))] + nouns[randint(0,len(nouns))]), 
+		}
+	]
+	return jsonify({'nuts': nuts})
