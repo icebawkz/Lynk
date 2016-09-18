@@ -42,3 +42,18 @@ def get_tasks():
 		}
 	]
 	return jsonify({'nuts': nuts})
+
+@app.route('/nuts/<int:task_id>', methods=['PUT'])
+def update_nut(task_id):
+    nut = [nut for nut in nuts if nut['id'] == task_id]
+    if len(nut) == 0:
+        abort(404)
+    if not request.json:
+        abort(400)
+    if 'title' in request.json and type(request.json['title']) != unicode:
+        abort(400)
+    if 'description' in request.json and type(request.json['description']) is not unicode:
+        abort(400)
+    task[0]['title'] = request.json.get('title', task[0]['title'])
+    task[0]['description'] = request.json.get('description', task[0]['description'])
+    return jsonify({'task': task[0]})
